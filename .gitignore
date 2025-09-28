@@ -1,8 +1,7 @@
-im.db
+
 
 *.db
 
-im.db
-im.zip
-*.db
 *.zip
+
+*.gz
