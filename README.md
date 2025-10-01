@@ -1,76 +1,44 @@
-# 🎬 Greenlight Analytics — Phase 2 Project
+# Greenlight Analytics — Phase 2 Project
 
-## 📖 Executive Summary  
-This project analyzes movie industry data from **Box Office Mojo** and **IMDb (via SQLite)** to guide strategic decisions for a new film studio.  
-The analysis focuses on three key business questions:
+    This project analyzes movie industry data from Box Office Mojo and the Internet Movie Database (IMDb). 
+Its purpose is to provide insights that lead to actionable recommendations for decision-makers. 
+The intended audience is the head of a new movie studio and its shareholders, who are seeking evidence-based 
+strategies to guide the selection and release of films. Two primary data sources form the foundation of the analysis. 
+Box Office Mojo contributed detailed information on domestic and foreign grosses in CSV format, while IMDb supplied 
+structured data on movie basics and ratings through a SQLite database. 
+    These datasets were merged using shared identifiers such as title, primary title, year, start year, and movie ID. 
+Before analysis began, the data underwent careful preparation: duplicate records were removed, rows with critical 
+missing values were dropped, foreign grosses were converted to numeric values with missing entries set to zero, 
+and a new column for total gross was created by combining domestic and foreign grosses. This process ensured a 
+consistent and reliable dataset ready for exploration.  The first business question asked which genres and runtimes 
+are most successful. Results showed that Action, Adventure, and Fantasy films repeatedly deliver the highest box 
+office revenues. Both mean and median grosses were calculated across genres, while scatter plots illustrated 
+the relationship between runtime and audience ratings. 
+    A clear pattern emerged: runtimes between ninety-five and one hundred and twenty minutes tended to be associated 
+with stronger audience reception and commercial success.  The second question explored whether ratings correlate with 
+revenue. Scatter plots and regression analysis revealed that higher IMDb ratings often align with stronger box office 
+performance. Because grosses vary dramatically across films—from small independent releases to billion-dollar 
+blockbusters—a logarithmic scale was applied to the revenue axis to clarify the patterns. 
+    This adjustment made it possible to see that audience and critical approval can play a measurable role in 
+financial outcomes.  The third question investigated how domestic and foreign markets differ by studio. 
+Aggregating grosses at the studio level highlighted distinct differences in how companies balance domestic versus 
+international audiences. Stacked bar charts provided a clear comparison of studios that rely primarily on domestic 
+earnings with those that draw more heavily from foreign markets. Such distinctions underline the importance of 
+tailoring release strategies to each studio’s strengths and target demographics.  Taken together, these findings point
+to several recommendations. Studios should focus on genres with a consistent record of high returns, particularly 
+Action, Adventure, and Fantasy. 
+    Attention to runtime is also warranted, with films in the ninety-five to one hundred 
+and twenty minute range offering a strong balance of audience engagement and commercial appeal. 
+Release strategies must consider the unique revenue profiles of domestic and international markets, 
+ensuring that marketing and distribution efforts align with the strengths of each studio. Finally, because higher 
+ratings are linked to stronger performance, investment in creative and production choices that enhance quality and 
+audience satisfaction should remain a priority.  The analysis was carried out in Python using pandas, numpy, and 
+sqlite3 for data management, with matplotlib and seaborn handling visualization. Box Office Mojo provided CSV data, 
+while IMDb offered a SQLite database. To reproduce the analysis, clone this repository, install the dependencies 
+listed in requirements.txt, and place the files `bom.movie_gross.csv.gz` and `im.db` in the project directory. 
+Once the environment is prepared, the analysis can be run by opening the Jupyter notebook `notebook.ipynb`.
 
-1. **Which genres and runtimes are most successful?**  
-2. **Do ratings correlate with revenue?**  
-3. **How do domestic vs. foreign markets vary by studio?**  
-
----
-
-## 🔑 Key Insights  
-- **Action, Adventure, and Fantasy** films consistently generate the highest box office revenues.  
-- Studios differ significantly in their **domestic vs. foreign revenue mix** — release strategies matter.  
-- **Runtimes between 95–120 minutes** correlate with stronger ratings and solid box office performance.  
-
----
-
-## 💡 Recommendations  
-1. Prioritize high-performing genres.  
-2. Balance domestic and international release strategies.  
-3. Greenlight films with strong audience signals (ratings, genre fit, runtime).  
-
----
-
-## 🗂️ Data Sources  
-- **Box Office Mojo (CSV):** Domestic and foreign grosses.  
-- **IMDb (SQLite):** Movie basics and ratings tables.  
-
-The datasets were merged on keys such as `title / primary_title`, `year / start_year`, and `movie_id`.  
-
----
-
-## ⚙️ Data Preparation  
-Before analysis, the following steps were performed:  
-- Removed duplicate rows.  
-- Dropped records with critical null values.  
-- Converted `foreign_gross` to numeric and filled missing values with 0.  
-- Added a `total_gross` column (`domestic_gross + foreign_gross`).  
-
----
-
-## 📊 Analysis & Visuals  
-- **Genres & Runtimes:**  
-  - Aggregated revenues by genre.  
-  - Explored correlations between runtime and ratings.  
-
-- **Ratings & Revenue Correlation:**  
-  - Scatter plots and regression lines with log-scale transformation on revenues.  
-
-- **Domestic vs. Foreign Markets:**  
-  - Compared studio-level performance with stacked bar charts.  
-
----
-
-## 🛠️ Tech Stack  
-- **Python**: `pandas`, `numpy`, `sqlite3`  
-- **Visualization**: `matplotlib`, `seaborn`  
-- **Data sources**: CSV (Box Office Mojo), SQLite (IMDb)  
-
----
-
-## ▶️ How to Run  
-1. Clone this repository.  
-2. Install dependencies:  
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Place `bom.movie_gross.csv.gz` and `im.db` in the project folder.  
-4. Open the notebook:  
-   ```bash
-   jupyter notebook notebook.ipynb
-   ```
-
----
+In summary, this project demonstrates how combining box office data with audience ratings can generate practical 
+business insights. By identifying the genres, runtimes, and release strategies most strongly associated with 
+financial success, the results provide clear guidance for a new movie studio seeking to maximize its competitive 
+advantage.
